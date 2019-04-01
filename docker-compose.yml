@@ -1,0 +1,52 @@
+version: "3.2"
+services:
+
+ vs-proxy:
+  container_name: vs-proxy
+  build: ./nginx/
+  ports:
+  - "80:80"
+  - "443:443"
+  networks:
+  - vs-web
+  logging:
+    options:
+      max-size: 50m
+  volumes:
+  - type: bind
+    source: ./mnt/disks/vscode/certbot/certs
+    target: /etc/letsencrypt
+    read_only: true
+  - type: bind
+    source: ./mnt/disks/vscode/certbot/logs
+    target: /var/lib/letsencrypt
+    read_only: true
+
+ vs-certbot:
+  container_name: vs-certbot
+  image: certbot/certbot
+  entrypoint: certbot
+  networks:
+  - vs-web
+  logging:
+    options:
+      max-size: 50m
+  volumes:
+  - type: bind
+    source: ./mnt/disks/vscode/certbot/certs
+    target: /etc/letsencrypt
+    read_only: false
+  - type: bind
+    source: ./mnt/disks/vscode/certbot/logs
+    target: /var/lib/letsencrypt
+    read_only: false
+  command:  ash -c "sleep 6 && certbot certonly --standalone -d virtualstyle.us --text --agree-tos --email rob@virtualstyle.us --server https://acme-v01.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --renew-by-default --preferred-challenges http-01"
+  entrypoint: ""
+  ports:
+    - "80"
+    - "443"
+  environment:
+    - TERM=xterm
+
+networks:
+  vs-web:
