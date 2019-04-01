@@ -59,3 +59,7 @@ typings/
 
 # next.js build output
 .next
+
+.git/
+.DS_Store
+mnt/disks/vscode/certbot/
