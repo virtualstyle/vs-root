@@ -1,5 +1,5 @@
 steps:
 - name: 'docker/compose:1.23.2'
+  args: ['down', '--rmi', 'all']
+- name: 'docker/compose:1.23.2'
   args: ['up', '-d']
-- name: docker
-  args: ['ps']
