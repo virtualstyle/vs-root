@@ -1,4 +1,4 @@
 steps:
 - name: 'docker/compose:1.23.2'
-  args: ['build', '-t', 'gcr.io/rob-wood-virtualstyle/vs-root', '.']
-images: ['gcr.io/rob-wood-virtualstyle/vs-root']
+  args: ['build', '-t', 'gcr.io/rob-wood-virtualstyle/vs-root_vs-proxy:latest', '.']
+images: ['gcr.io/rob-wood-virtualstyle/vvs-root_vs-proxy:latest']
