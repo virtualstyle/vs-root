@@ -1,6 +1,6 @@
 steps:
 - name: 'docker/compose:1.23.2'
-  args: ['up', '-d']
+  args: ['build]
 - name: 'gcr.io/cloud-builders/docker'
   args: ['tag', 'workspace_vs-proxy:latest', 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA']
 images: ['gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA']
