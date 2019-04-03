@@ -3,7 +3,7 @@ steps:
   args: ['build']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['tag', 'workspace_vs-proxy:latest', 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA']
-images: ['gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA']
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['app', 'deploy']
   timeout: '1600s'
+images: ['gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA']
