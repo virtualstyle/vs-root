@@ -5,4 +5,5 @@ steps:
   args: ['tag', 'workspace_vs-proxy:latest', 'gcr.io/$PROJECT_ID/vs-root:latest']
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['app', 'deploy', '--image-url', 'gcr.io/$PROJECT_ID/vs-root:latest']
+timeout: 1200s
 #images: ['gcr.io/$PROJECT_ID/vs-root:latest']
