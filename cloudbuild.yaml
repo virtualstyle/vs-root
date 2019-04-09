@@ -6,4 +6,5 @@ steps:
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['app', 'deploy', '--image-url', 'gcr.io/$PROJECT_ID/vs-root:latest']
   timeout: 1200s
+timeout: 1200s
 #images: ['gcr.io/$PROJECT_ID/vs-root:latest']
