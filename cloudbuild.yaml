@@ -1,10 +1,12 @@
 steps:
 - name: 'docker/compose:1.23.2'
   args: ['build']
+  timeout: 600s
 - name: 'gcr.io/cloud-builders/docker'
   args: ['tag', 'workspace_vs-proxy:latest', 'gcr.io/$PROJECT_ID/vs-root:latest']
+  timeout: 600s
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['app', 'deploy', '--image-url', 'gcr.io/$PROJECT_ID/vs-root:latest']
   timeout: 1200s
-timeout: 1200s
+timeout: 2400s
 #images: ['gcr.io/$PROJECT_ID/vs-root:latest']
